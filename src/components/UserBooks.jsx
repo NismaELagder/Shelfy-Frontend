@@ -5,7 +5,7 @@ import React, {
 } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import { MdDelete } from "react-icons/md";
+import { MdDelete ,MdEditDocument} from "react-icons/md";
 import { GiWhiteBook } from "react-icons/gi";
 
 import { AuthContext } from "../store/AuthContextProvider";
@@ -69,13 +69,14 @@ const UserBooks = () => {
             </Link>{" "}
             <div className="flex justify-end items-center px-4">
               <Link
-                className=" py-2  px-4 bg-teal-500  hover:bg-teal-600 rounded-lg text-white text-sm me-4"
+                className="py-2 px-4 bg-white square-full rounded-md border border-stone-300 text-dark hover:text-indigo-500 text-sm me-4"
                 to={`/books/editbook/${book["_id"]}`}
+                alt="Edit book details"
               >
-                Edit
+                <MdEditDocument className="text-base" />
               </Link>
               <button
-                className=" py-2 px-4 bg-red-400 rounded-lg text-white text-sm hover:bg-red-500"
+                className=" py-2 px-4 hover:text-red-600 square-full rounded-md border border-stone-300 text-dark text-sm"
                 onClick={() => deleteHandler(book["_id"])}
               >
                 <MdDelete className="text-base" />

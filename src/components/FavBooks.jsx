@@ -64,7 +64,7 @@ const FavBooks = () => {
             </Link>{" "}
             <div className="flex justify-end items-center px-4">
               <button
-                className=" py-2 px-4 bg-red-400 rounded-lg text-white text-sm hover:bg-red-500"
+                className="py-2 px-4 square-full reounded-md border text-dark text-sm hover:text-red-500"
                 onClick={() => removeBook(book, user)}
               >
                 <FaHeartCrack />
