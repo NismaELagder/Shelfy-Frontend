@@ -57,7 +57,7 @@ export const BookDetails = () => {
                 {bookDetails?.title}
 
                 <button
-                  className=" py-[10px] px-[1rem] bg-red-400 rounded-full text-white text-sm hover:bg-red-500 border border-gray-50  "
+                  className=" py-[10px] px-[1rem] bg-red-400 square-full rounded-md text-white text-sm hover:bg-red-500 border border-gray-50  "
                   onClick={() => {
                     toggleFavBook(bookDetails, user);
                   }}
@@ -75,20 +75,20 @@ export const BookDetails = () => {
                   {bookDetails?.author}
                 </p>
               </div>
-              <p className="my-3 text-xs">
+              <p className="my-3 text-sm">
                 {bookDetails?.description}
               </p>
               <table className="text-left my-4">
                 <tbody>
-                  <tr className="text-xs">
+                  <tr className="text-sm">
                     <th>Publisher</th>
                     <td>{bookDetails?.publisher}</td>
                   </tr>
-                  <tr className="text-xs">
+                  <tr className="text-sm">
                     <th>Year</th>
                     <td>{bookDetails?.publishYear}</td>
                   </tr>
-                  <tr className="text-xs">
+                  <tr className="text-sm">
                     <th>Category</th>
                     <td>{bookDetails?.category}</td>
                   </tr>
@@ -96,11 +96,11 @@ export const BookDetails = () => {
               </table>
               <div>
                 <ReadBtn
-                  className="mr-8 rounded-full bg-dark px-12 py-2 text-white hover:bg-white hover:text-dark hover:border-dark hover:border text-xs"
+                  className="mr-8 square-full rounded-md bg-dark px-12 py-2 text-white hover:bg-white hover:text-dark hover:border-dark hover:border text-sm"
                   to={bookDetails?.file}
                 />
                 <DownloadBtn
-                  className=" rounded-full  px-8 py-2 text-stone-600 border border-stone-600 hover:bg-primary hover:text-white text-xs"
+                  className="square-full rounded-md px-8 py-2 text-stone-600 border border-stone-600 hover:bg-primary hover:text-white text-sm"
                   pdf={bookDetails?.file}
                 />
               </div>

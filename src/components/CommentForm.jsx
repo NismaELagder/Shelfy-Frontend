@@ -73,7 +73,7 @@ const CommentForm = ({ bookId, className }) => {
         <div className="flex justify-end w-2/3">
           <button
             type="button"
-            className=" rounded-full bg-dark px-12 py-2 text-white block"
+            className="square-full rounded-md bg-dark px-12 py-2 text-white block"
             onClick={addComment}
           >
             Submit
@@ -96,7 +96,7 @@ const CommentForm = ({ bookId, className }) => {
         ) : (
           comments?.map((comment) => (
             <div className=" my-2 bg-gray-50 px-4 py-2">
-              <h3 className="text-dark bg-slate-200 p-2 me-4 rounded-full w-fit">
+              <h3 className="text-dark bg-slate-200 p-2 me-4 square-full rounded-md w-fit">
                 {comment?.user}
               </h3>
               <p className="py-4">{comment?.text}</p>

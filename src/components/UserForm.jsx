@@ -35,7 +35,7 @@ const UserForm = () => {
   };
 
   return (
-    <div className="w-full min-h-[92.2vh] flex justify-center items-center bg-dark">
+    <div className="w-full min-h-[92.2vh] flex justify-center items-center bg-white">
       <form className="w-1/5 border-2 border-stone-300 shadow-stone-300  shadow  rounded p-4 bg-white">
         <div className="text-center font-semibold text-2xl">
           {pathname == "/signup" ? (
@@ -82,7 +82,7 @@ const UserForm = () => {
             {pathname == "/signup" ? "Sign up" : "Login"}
           </button>
           {pathname == "/signup" && (
-            <p className="my-2 text-xs font-light">
+            <p className="my-2 text-sm font-light">
               Already have an account?{" "}
               <Link
                 to={"/login"}
@@ -93,7 +93,7 @@ const UserForm = () => {
             </p>
           )}
           {pathname == "/login" && (
-            <p className="my-2 text-xs font-light ">
+            <p className="my-2 text-sm font-light ">
               Don't have an account yet?{" "}
               <Link
                 to={"/signup"}

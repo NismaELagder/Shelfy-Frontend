@@ -63,19 +63,19 @@ const UserBooks = () => {
                 alt={book.title}
                 className=" w-1/3 h-36"
               />
-              <p className="text-xs ps-4">
+              <p className="text-sm ps-4">
                 {book.description.substring(0, 70)}...
               </p>
             </Link>{" "}
             <div className="flex justify-end items-center px-4">
               <Link
-                className=" py-2  px-4 bg-teal-500  hover:bg-teal-600 rounded-lg text-white text-xs me-4"
+                className=" py-2  px-4 bg-teal-500  hover:bg-teal-600 rounded-lg text-white text-sm me-4"
                 to={`/books/editbook/${book["_id"]}`}
               >
                 Edit
               </Link>
               <button
-                className=" py-2 px-4 bg-red-400 rounded-lg text-white text-xs hover:bg-red-500"
+                className=" py-2 px-4 bg-red-400 rounded-lg text-white text-sm hover:bg-red-500"
                 onClick={() => deleteHandler(book["_id"])}
               >
                 <MdDelete className="text-base" />

@@ -15,7 +15,7 @@ export const Home = () => {
   }, [user]);
 
   return (
-    <div className="bg-dark min-h-[89.9vh]">
+    <div className="bg-white min-h-[89.9vh] py-4">
       {!BooksCtx.books.length ? <Spinner /> : <Books />}
     </div>
   );

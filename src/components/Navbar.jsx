@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import useLogout from "../hooks/useLogouthook.jsx";
 import { AuthContext } from "../store/AuthContextProvider.jsx";
+import { FaSignOutAlt } from "react-icons/fa";
 const Navbar = () => {
   const { logout } = useLogout();
   const { user, dispatch } = useContext(AuthContext);
@@ -10,10 +11,10 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="flex w-full justify-between items-center px-[8.5%]  py-4  text-dark bg-white ">
+    <nav className="flex w-full justify-between items-center px-[8.5%]  py-4 text-white bg-dark border-b border-palette-lighter sticky top-0 z-20">
       <Link to={"/"}>
-        <p className="font-bold font-logo">
-          Online Book Store
+        <p className="font-bold font-logo text-3xl">
+          Shelfy
         </p>
       </Link>
 
@@ -21,6 +22,9 @@ const Navbar = () => {
         {!user && (
           <>
             <Link to="/login">Login</Link>
+            <div
+              className="inline-block w-0.5 self-stretch bg-white opacity-100 dark:opacity-50"
+            ></div>
             <Link to="/signup">Sign Up</Link>
           </>
         )}
@@ -28,11 +32,15 @@ const Navbar = () => {
           <>
             <Link
               to="/profile"
-              className="text-dark bg-slate-100 p-2 me-4 rounded-full"
+              className="text-white p-2 me-4"
             >
               {user.userName}
             </Link>
-            <button onClick={logoutHandler}>Logout</button>
+            <div
+              className="inline-block w-0.5 self-stretch bg-white opacity-100 dark:opacity-50"
+            ></div>
+            <button onClick={logoutHandler}><FaSignOutAlt alt="Logout" /></button>
+
           </>
         )}
       </div>

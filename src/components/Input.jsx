@@ -11,12 +11,12 @@ const Input = ({
 }) => {
   return (
     <div className={className}>
-      <label htmlFor="" className="text-xs font-semibold">
+      <label htmlFor="" className="text-sm font-semibold">
         {label}
       </label>
       {type == "textarea" ? (
         <textarea
-          className="border w-full rounded py-1 border-stone-200 px-2 placeholder-stone-300 block placeholder:text-xs"
+          className="border w-full rounded py-1 border-stone-200 px-2 placeholder-stone-300 block placeholder:text-sm"
           placeholder={label}
           name={name}
           onChange={(e) => onChange(e)}
@@ -24,7 +24,7 @@ const Input = ({
         />
       ) : (
         <input
-          className={`border w-full rounded py-1 border-stone-200 px-2 placeholder-stone-300 block placeholder:text-xs`}
+          className={`border w-full rounded py-1 border-stone-200 px-2 placeholder-stone-300 block placeholder:text-sm`}
           placeholder={label}
           type={type}
           name={name}
