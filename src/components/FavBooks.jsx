@@ -58,13 +58,13 @@ const FavBooks = () => {
                 alt={book.title}
                 className=" w-1/3 h-36"
               />
-              <p className="text-xs ps-4">
+              <p className="text-sm ps-4">
                 {book.description.substring(0, 70)}...
               </p>
             </Link>{" "}
             <div className="flex justify-end items-center px-4">
               <button
-                className=" py-2 px-4 bg-red-400 rounded-lg text-white text-xs hover:bg-red-500"
+                className="py-2 px-4 square-full reounded-md border text-dark text-sm hover:text-red-500"
                 onClick={() => removeBook(book, user)}
               >
                 <FaHeartCrack />

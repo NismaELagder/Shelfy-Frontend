@@ -24,7 +24,7 @@ const PDFViewer = () => {
       <div className="w-4/5 mx-auto flex justify-between my-4 items-center">
         <button
           onClick={backHandler}
-          className=" rounded-full bg-dark px-12 py-2 text-white"
+          className="square-full rounded-md bg-dark px-12 py-2 text-white"
         >
           Back
         </button>

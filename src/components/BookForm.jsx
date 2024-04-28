@@ -150,7 +150,7 @@ export const BookForm = ({ edit }) => {
           <h1 className="font-semibold text-2xl mb-2">
             {edit ? "Edit" : " Add"} a Book
           </h1>
-          <p className="text-xs font-light">
+          <p className="text-sm font-light">
             "A book for the mind is what exercise is to the
             body."
             <span className="block mt-1">
@@ -228,14 +228,14 @@ export const BookForm = ({ edit }) => {
             />
           </div>{" "}
           {alertMessage && (
-            <p className="text-red-600 font-light text-xs">
+            <p className="text-green-600 font-bold text-sm">
               {alertMessage}
             </p>
           )}
           <button
             type="button"
             onClick={edit ? bookEditing : bookCreation}
-            className="w-5/6 mx-auto my-12 block rounded-full bg-dark hover:bg-opacity-80  py-2 text-white"
+            className="w-5/6 mx-auto my-12 block square-full rounded-md bg-dark hover:bg-opacity-80  py-2 text-white"
           >
             {edit ? "Edit" : "Add"} book
           </button>{" "}
