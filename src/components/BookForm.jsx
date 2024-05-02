@@ -4,9 +4,26 @@ import axios from "axios";
 import logo from "../assets/logo.jpg";
 import Input from "../components/Input";
 import { AuthContext } from "../store/AuthContextProvider";
+import { FaQuoteRight, FaQuoteLeft, FaCheck, FaTimes } from "react-icons/fa";
+
+const ALERT_MESSAGES_BG_COLOR = [
+  {
+    message: "Something is wrong. Try again later.", color: "bg-red-200"
+  },
+  {
+    message: "All Fields are required except publisher.", color: "bg-red-200"
+  },
+  {
+    message: "Book Edited Successfully!", color: "bg-green-200"
+  },
+  {
+    message: "Book Added Successfully!", color: "bg-green-200"
+  }
+]
+
 export const BookForm = ({ edit }) => {
   const [book, setBook] = useState();
-  const [alertMessage, setAlertMessage] = useState("");
+  const [alertMessage, setAlertMessage] = useState(null);
   const { id } = useParams();
   const { user } = useContext(AuthContext);
   const navigate = useNavigate();
@@ -35,7 +52,7 @@ export const BookForm = ({ edit }) => {
           ? e.target.files[0]
           : e.target.value,
     }));
-    setAlertMessage("");
+    setAlertMessage(null);
   };
 
   const bookCreation = async () => {
@@ -49,7 +66,7 @@ export const BookForm = ({ edit }) => {
       !book?.publishYear
     ) {
       setAlertMessage(
-        "All Fields are required except publisher."
+        ALERT_MESSAGES_BG_COLOR[1]
       );
     } else {
       const formData = new FormData();
@@ -68,7 +85,7 @@ export const BookForm = ({ edit }) => {
           }
         )
         .then((response) => {
-          setAlertMessage("Book added  Successfully!");
+          setAlertMessage(ALERT_MESSAGES_BG_COLOR[3]);
           setBook((currentBook) => ({
             title: "",
             author: "",
@@ -81,7 +98,7 @@ export const BookForm = ({ edit }) => {
         })
         .catch((error) => {
           setAlertMessage(
-            "Something is wrong. Try again later."
+            ALERT_MESSAGES_BG_COLOR[0]
           );
         });
     }
@@ -98,7 +115,7 @@ export const BookForm = ({ edit }) => {
       !book?.publishYear
     ) {
       setAlertMessage(
-        "All Fields are required except publisher...."
+        ALERT_MESSAGES_BG_COLOR[1]
       );
     } else {
       const formData = new FormData();
@@ -118,7 +135,7 @@ export const BookForm = ({ edit }) => {
           }
         )
         .then(() => {
-          setAlertMessage("Book Edited  Successfully!");
+          setAlertMessage(ALERT_MESSAGES_BG_COLOR[2]);
           setBook({
             title: "",
             author: "",
@@ -137,23 +154,24 @@ export const BookForm = ({ edit }) => {
         })
         .catch((error) => {
           setAlertMessage(
-            "Something is wrong. Try again later."
+            ALERT_MESSAGES_BG_COLOR[0]
           );
         });
     }
   };
 
   return (
-    <div className="flex w-2/3 mx-auto my-8 rounded-md shadow-stone-400 shadow-md font-primary  ">
-      <section className="w-1/2 rounded-md p-8 pb-0">
-        <div>
+    <div className="rounded-md bg-white w-screen mt-4 flex basis-11/12 px-4 min-[360px]:px-10 min-[460px]:px-30 sm:px-30 min-[900px]:px-32 xl:px-48">
+      <section className="w-full md:w-1/2 rounded-md p-8 pb-0">
+        <div className="w-full mx-auto">
           <h1 className="font-semibold text-2xl mb-2">
             {edit ? "Edit" : " Add"} a Book
           </h1>
           <p className="text-sm font-light">
-            "A book for the mind is what exercise is to the
-            body."
-            <span className="block mt-1">
+            <sup><FaQuoteLeft className="inline" /></sup>
+            {" "}A book for the mind is what exercise is to the body.{" "}
+            <sup><FaQuoteRight className="inline" /></sup>{" "}
+            <span className="block">
               - Joseph Addison
             </span>
           </p>
@@ -228,20 +246,22 @@ export const BookForm = ({ edit }) => {
             />
           </div>{" "}
           {alertMessage && (
-            <p className="text-green-600 font-bold text-sm">
-              {alertMessage}
+            <p className={`mt-2 mb-4 p-2 ${alertMessage.color} rounded w-full`}>
+              {alertMessage.color.includes("green") && <FaCheck className="inline w-[20px] h-[20px]" />}
+              {alertMessage.color.includes("red") && <FaTimes className="inline w-[20px] h-[20px]" />}
+              {" "}{alertMessage.message}
             </p>
           )}
           <button
             type="button"
             onClick={edit ? bookEditing : bookCreation}
-            className="w-5/6 mx-auto my-12 block square-full rounded-md bg-dark hover:bg-opacity-80  py-2 text-white"
+            className="w-full mx-auto my-12 block border square-full rounded-md border-stone-300 hover:text-indigo-500 font-bold py-2"
           >
-            {edit ? "Edit" : "Add"} book
+            Continue
           </button>{" "}
         </form>
       </section>
-      <section className="w-1/2">
+      <section className="hidden md:block w-1/2">
         <img
           src={logo}
           alt="E-library"

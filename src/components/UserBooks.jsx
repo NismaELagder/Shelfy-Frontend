@@ -5,10 +5,11 @@ import React, {
 } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import { MdDelete ,MdEditDocument} from "react-icons/md";
+import { MdDelete, MdEditDocument } from "react-icons/md";
 import { GiWhiteBook } from "react-icons/gi";
 
 import { AuthContext } from "../store/AuthContextProvider";
+import { IoEyeSharp } from "react-icons/io5";
 
 const UserBooks = () => {
   const { user } = useContext(AuthContext);
@@ -43,49 +44,73 @@ const UserBooks = () => {
   }, [user]);
 
   return (
-    <div className="w-4/5 mx-12 font-primary mt-10">
+    <>
       <h1 className="flex justify-center items-center mb-4 font-semibold text-xl">
-        <GiWhiteBook className="me-1 text-dark text-2xl" />
+        <GiWhiteBook className="me-1 text-2xl" />
         <span className="capitalize">
           {user?.userName}{" "}
         </span>
         's Books
       </h1>
       {myBooks.map((book) => (
-        <>
-          <div className=" border border-stone-300 h-fit-content flex justify-between border-collapse">
-            <Link
-              to={`/books/${book["_id"]}`}
-              className="w-1/3 flex  items-center"
-            >
-              <img
-                src={book.imageURL}
-                alt={book.title}
-                className=" w-1/3 h-36"
-              />
-              <p className="text-sm ps-4">
+        <div className="border border-stone-300 mb-2 flex flex-col sm:flex-row justify-between border-collapse">
+
+          <div className=" w-full flex p-2">
+            <img
+              src={book.imageURL}
+              alt={book.title}
+              className="inline-block w-32 h-44 shadow-md shadow-gray-700"
+            />
+            <div className="p-2 flex flex-col justify-evenly justify-items-start">
+              <p className="block font-semibold underline hover:text-indigo-500">
+                <Link
+                  to={`/books/${book["_id"]}`}>
+
+                  {book.title}
+                </Link>
+              </p>
+              <p className="block h-2/3">
                 {book.description.substring(0, 70)}...
               </p>
-            </Link>{" "}
-            <div className="flex justify-end items-center px-4">
-              <Link
-                className="py-2 px-4 bg-white square-full rounded-md border border-stone-300 text-dark hover:text-indigo-500 text-sm me-4"
-                to={`/books/editbook/${book["_id"]}`}
-                alt="Edit book details"
-              >
-                <MdEditDocument className="text-base" />
-              </Link>
-              <button
-                className=" py-2 px-4 hover:text-red-600 square-full rounded-md border border-stone-300 text-dark text-sm"
-                onClick={() => deleteHandler(book["_id"])}
-              >
-                <MdDelete className="text-base" />
-              </button>
             </div>
           </div>
-        </>
+
+          <div className="border border-stone-300 border-collapse flex justify-center items-center py-2 
+            sm:flex-col sm:px-4 sm:py-0">
+
+            <Link
+              className="block border-stone-300 hover:text-indigo-500 flex w-full h-full 
+                border-r justify-center border-collapse
+                sm:items-center sm:border-b sm:border-r-0"
+              to={`/books/${book["_id"]}`}
+            >
+              <IoEyeSharp className="inline-block" />
+            </Link>
+
+            <Link
+              className="block hover:text-indigo-500 border-stone-300 flex
+                w-full h-full border-r justify-center border-collapse
+                sm:items-center sm:border-b sm:border-r-0"
+              to={`/books/editbook/${book["_id"]}`}
+              alt="Edit book details"
+            >
+              <MdEditDocument className="inline-block" />
+            </Link>
+
+            <button
+              className="hover:text-indigo-500 border-stone-300 flex
+                w-full h-full border-collapse
+                justify-center
+                sm:items-center
+                "
+              onClick={() => deleteHandler(book["_id"])}
+            >
+              <MdDelete className="inline-block" />
+            </button>
+          </div>
+        </div>
       ))}
-    </div>
+    </>
   );
 };
 

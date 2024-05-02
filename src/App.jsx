@@ -3,43 +3,46 @@ import BooksContextProvider from "./store/BooksContextProvider";
 import AuthContextProvider from "./store/AuthContextProvider";
 import Signup from "./pages/Signup";
 import Login from "./pages/Login";
-import Navbar from "./components/Navbar";
 import Profile from "./pages/Profile";
 import PDFViewer from "./components/PDFViewer";
 import { Home } from "./pages/Home";
 import { CreateBook } from "./pages/CreateBook";
 import { EditBook } from "./pages/EditBook";
 import { BookDetails } from "./pages/BookDetails";
+import { Wrapper } from "./pages/Wrapper";
+
 function App() {
+
   return (
     <AuthContextProvider>
       <BooksContextProvider>
-        <Navbar />
+
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/books" element={<Home />} />
+          <Route path="/" element={<Wrapper ><Home /></Wrapper>} />
+          <Route path="/books" element={<Wrapper ><Home /></Wrapper>} />
 
           <Route
             path="/books/:id"
-            element={<BookDetails />}
+            element={<Wrapper><BookDetails /></Wrapper>}
           />
           <Route
             path="/books/createbook"
-            element={<CreateBook />}
+            element={<Wrapper><CreateBook /></Wrapper>}
           />
           <Route
             path="/books/editbook/:id"
-            element={<EditBook />}
+            element={<Wrapper><EditBook /></Wrapper>}
           />
 
-          <Route path="/profile" element={<Profile />} />
+          <Route path="/profile" element={<Wrapper><Profile /></Wrapper>} />
           <Route
             path="/books/:id/preview/:pdf"
-            element={<PDFViewer />}
+            element={<Wrapper><PDFViewer /></Wrapper>}
           />
           <Route path="/signup" element={<Signup />} />
           <Route path="/login" element={<Login />} />
         </Routes>
+
       </BooksContextProvider>
     </AuthContextProvider>
   );

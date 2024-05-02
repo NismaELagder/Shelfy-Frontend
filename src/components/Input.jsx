@@ -10,13 +10,13 @@ const Input = ({
   accept,
 }) => {
   return (
-    <div className={className}>
-      <label htmlFor="" className="text-sm font-semibold">
+    <div className="w-full">
+      {/* <label htmlFor="" className="text-sm font-medium">
         {label}
-      </label>
+      </label> */}
       {type == "textarea" ? (
         <textarea
-          className="border w-full rounded py-1 border-stone-200 px-2 placeholder-stone-300 block placeholder:text-sm"
+          className="block border w-full rounded border-stone-200 placeholder-stone-500 px-3 py-1 mt-4 focus:border-stone-700 focus:border-2 focus:outline-none"
           placeholder={label}
           name={name}
           onChange={(e) => onChange(e)}
@@ -24,10 +24,11 @@ const Input = ({
         />
       ) : (
         <input
-          className={`border w-full rounded py-1 border-stone-200 px-2 placeholder-stone-300 block placeholder:text-sm`}
+          className="block border w-full rounded border-stone-200 placeholder-stone-500 px-3 py-1 mt-4 focus:border-stone-700 focus:border-2 focus:outline-none"
           placeholder={label}
           type={type}
           name={name}
+          // required
           onChange={(e) => onChange(e)}
           accept={type === "file" ? accept : undefined}
           value={type !== "file" ? value : undefined}

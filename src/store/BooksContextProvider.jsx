@@ -13,7 +13,7 @@ export const BooksContext = createContext({
 });
 
 const BooksContextProvider = ({ children }) => {
-  const [books, setBooks] = useState([]);
+  const [books, setBooks] = useState({});
   const [loading, setLoading] = useState(false);
   const { user } = useContext(AuthContext);
   useEffect(() => {
@@ -28,7 +28,7 @@ const BooksContextProvider = ({ children }) => {
       )
       .then((response) => {
         setLoading(true);
-        setBooks((preBooks) => [...response.data]);
+        setBooks((preBooks) => Object.groupBy([...response.data], ({ category }) => category.toLowerCase()));
         setLoading(false);
       });
   }, [user]);
