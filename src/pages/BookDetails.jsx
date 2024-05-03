@@ -43,16 +43,18 @@ export const BookDetails = () => {
     <>
       {isLoading && <Spinner />}
       {!isLoading && (
-        <div className="container mx-auto py-2">
-          <div className="book  flex my-8 h-[440px]  font-primary">
-            <section className=" shadow-md  shadow-stone-400 min-w-1/3 w-1/3 bg-gray-50">
+        <div className="bg-white w-screen mt-4 flex flex-col basis-11/12 px-4 min-[360px]:px-10 min-[460px]:px-30 sm:px-30 min-[900px]:px-32 xl:px-48">
+
+          <div className="book flex my-8 h-[440px]  font-primary">
+
+            <section className="shadow-md shadow-stone-400 min-w-1/3 w-1/3 bg-gray-50">
               <img
                 src={bookDetails?.imageURL}
                 alt="book image"
                 className="w-2/3 h-full mx-auto"
               />
             </section>
-            <section className="px-8 py-12 flex flex-col justify-between w-2/3">
+            <section className="px-8 py-6 flex flex-col justify-between w-2/3">
               <h1 className="text-3xl font-bold flex justify-between items-center">
                 {bookDetails?.title}
 
@@ -82,7 +84,7 @@ export const BookDetails = () => {
                 <tbody>
                   <tr className="text-sm">
                     <th>Publisher</th>
-                    <td>{bookDetails?.publisher}</td>
+                    <td>{bookDetails?.publisher || "..."}</td>
                   </tr>
                   <tr className="text-sm">
                     <th>Year</th>
@@ -96,16 +98,18 @@ export const BookDetails = () => {
               </table>
               <div>
                 <ReadBtn
-                  className="mr-8 square-full rounded-md border text-dark px-12 py-2 hover:text-indigo-500 text-sm"
+                  className="border square-full rounded-md border-stone-300 hover:text-indigo-500 font-semibold px-12 py-2 mr-4"
                   to={bookDetails?.file}
                 />
                 <DownloadBtn
-                  className="square-full rounded-md border text-dark px-8 py-2 hover:text-indigo-500 text-sm"
+                  className="border square-full rounded-md border-stone-300 hover:text-indigo-500 font-semibold px-12 py-2 mr-4"
                   pdf={bookDetails?.file}
                 />
               </div>
             </section>
+
           </div>
+
           <CommentForm className="my-16" bookId={id} />
         </div>
       )}

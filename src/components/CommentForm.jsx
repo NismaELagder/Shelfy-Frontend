@@ -6,12 +6,16 @@ import React, {
 import { AuthContext } from "../store/AuthContextProvider";
 import { FaComments } from "react-icons/fa6";
 import axios from "axios";
+import { PiUserCircleThin } from "react-icons/pi";
+import { IoInformationCircleOutline } from "react-icons/io5";
+
 const CommentForm = ({ bookId, className }) => {
   const { user } = useContext(AuthContext);
-  const [comment, setComment] = useState({
-    user: "",
-    text: "",
-  });
+  // const [comment, setComment] = useState({
+  //   user: "",
+  //   text: "",
+  // });
+  const [comment, setComment] = useState(null);
   const [comments, setComments] = useState([]);
 
   useEffect(() => {
@@ -52,7 +56,7 @@ const CommentForm = ({ bookId, className }) => {
 
   return (
     <>
-      <form className={className}>
+      <form className={`w-full ${className}`}>
         <div className="flex justify-between items-center ">
           <label
             htmlFor="comment"
@@ -65,15 +69,15 @@ const CommentForm = ({ bookId, className }) => {
           id="comment"
           name="comment"
           placeholder="Type here."
-          rows={6}
+          rows={5}
           cols={30}
-          className="border border-stone-500 rounded-md w-2/3 my-4 px-4 py-2"
+          className="border border-stone-500 rounded-md w-full my-4 px-4 py-2"
           onChange={changeHandler}
         />
-        <div className="flex justify-end w-2/3">
+        <div className="flex justify-end">
           <button
             type="button"
-            className="square-full rounded-md bg-dark px-12 py-2 text-white block"
+            className="border square-full rounded-md border-stone-300 hover:text-indigo-500 font-semibold px-12 py-2"
             onClick={addComment}
           >
             Submit
@@ -82,24 +86,24 @@ const CommentForm = ({ bookId, className }) => {
       </form>
 
       <div
-        className="w-5/6 font-primary
-   "
+        className="w-full"
       >
-        <h2 className=" font-semibold text-lg my-8">
+        <h2 className="font-semibold text-lg my-8">
           <FaComments className="inline" /> Comments
         </h2>
         {comments?.length === 0 ? (
-          <p>
-            There are no comments yet. Be the first to
-            comment!
+
+          <p className="mt-2 mb-4 p-2 bg-sky-200 rounded w-full">
+            <IoInformationCircleOutline className="inline w-[20px] h-[20px]" /> There are no comments yet. Be the first to comment!
           </p>
         ) : (
           comments?.map((comment) => (
-            <div className=" my-2 bg-gray-50 px-4 py-2">
-              <h3 className="text-dark bg-slate-200 p-2 me-4 square-full rounded-md w-fit">
+            <div className="my-2 bg-gray-50 px-4 py-2 border-stone-300 border ">
+              <h3 className="p-2 me-4 square-full rounded-md underline">
+                <PiUserCircleThin className="inline w-[30px] h-[30px]" />
                 {comment?.user}
               </h3>
-              <p className="py-4">{comment?.text}</p>
+              <p className="px-2 py-4">{comment?.text}</p>
             </div>
           ))
         )}

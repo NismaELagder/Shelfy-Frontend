@@ -35,81 +35,90 @@ const UserForm = () => {
   };
 
   return (
-    <div className="w-full min-h-[92.2vh] flex justify-center items-center bg-white">
-      <form className="w-1/5 border-2 border-stone-300 shadow-stone-300  shadow  rounded p-4 bg-white">
-        <div className="text-center font-semibold text-2xl">
-          {pathname == "/signup" ? (
-            <h1>Join us today!</h1>
-          ) : (
-            <h1>Welcome back!</h1>
-          )}
+    <div className="h-screen w-screen flex flex-col justify-center items-center bg-stone-200 sm:px-16 sm:py-6">
+      <form className="flex basis-7/12 w-5/6 sm:w-3/5 sm:basis-9/12 xl:w-3/12 justify-center flex-col items-center bg-white rounded border border-slate-200">
+        <div className="flex flex-col basis-1/5 items-center justify-around bg-white mx-auto">
+          <p className="block text-3xl text-indigo-600 font-logo font-extrabold">Shelfy</p>
+          <div className="flex basis-2/10 justify-center items-start bg-white text-lg w-full font-medium">
+            {pathname == "/signup" ? (
+              <h1>Join us today</h1>
+            ) : (
+              <h1>Welcome back</h1>
+            )}
+          </div>
         </div>
 
-        {pathname == "/signup" && (
+        <div className="flex basis-2/5 bg-white flex-col justify-around w-full px-3 sm:px-8">
+          {pathname == "/signup" && (
+            <Input
+              className=""
+              label={"Username*"}
+              name={"userName"}
+              onChange={(e) => onChange(e)}
+              value={user?.userName}
+              type={"text"}
+            />
+          )}
           <Input
-            className="my-4 w-11/12 mx-auto"
-            label={"User Name"}
-            name={"userName"}
+            className=""
+            label={"Email*"}
+            name={"email"}
             onChange={(e) => onChange(e)}
-            value={user?.userName}
-            type={"text"}
+            value={user?.email}
+            type={"email"}
           />
-        )}
-        <Input
-          className="my-4 w-11/12 mx-auto"
-          label={"Email"}
-          name={"email"}
-          onChange={(e) => onChange(e)}
-          value={user?.email}
-          type={"email"}
-        />
 
-        <Input
-          label={"Password"}
-          name={"password"}
-          onChange={(e) => onChange(e)}
-          value={user?.password}
-          type={"password"}
-          className={"my-4 w-11/12 mx-auto "}
-        />
-        <div className="w-11/12 mx-auto">
+          <Input
+            label={"Password*"}
+            name={"password"}
+            onChange={(e) => onChange(e)}
+            value={user?.password}
+            type={"password"}
+            className={""}
+          />
           <button
             onClick={submitHandler}
             type="button"
             disabled={loading || LogininLoading}
-            className=" block w-full bg-dark py-1 rounded text-white hover:bg-secondary"
+            className="block border w-full rounded border-stone-200 px-3 py-1 mt-4 bg-black text-white"
           >
             {pathname == "/signup" ? "Sign up" : "Login"}
           </button>
-          {pathname == "/signup" && (
-            <p className="my-2 text-sm font-light">
-              Already have an account?{" "}
-              <Link
-                to={"/login"}
-                className="font-medium text-dark hover:transition-opacity hover:text-secondary"
-              >
-                Login
-              </Link>
-            </p>
-          )}
-          {pathname == "/login" && (
-            <p className="my-2 text-sm font-light ">
-              Don't have an account yet?{" "}
-              <Link
-                to={"/signup"}
-                className="font-medium text-dark hover:transition-opacity hover:text-secondary"
-              >
-                Sign up
-              </Link>
-            </p>
-          )}
+
+          <div className="w-full py-1 mt-4">
+            {pathname == "/signup" && (
+              <p className="">
+                Already have an account?{" "}
+                <Link
+                  to={"/login"}
+                  className="hover:text-indigo-700 font-bold underline"
+                >
+                  Login
+                </Link>
+              </p>
+            )}
+            {pathname == "/login" && (
+              <p className="">
+                Don't have an account yet?{" "}
+                <Link
+                  to={"/signup"}
+                  className="hover:text-indigo-700 font-bold underline"
+                >
+                  Sign up
+                </Link>
+              </p>
+            )}
+            {(error || loginError) && (
+              <p className="block w-full bg-red-300">
+                {error} {loginError}
+              </p>
+            )}
+
+          </div>
         </div>
-        {(error || loginError) && (
-          <p className=" w-11/12 mx-auto text-center py-2 text-sm text-[#f94563e9] border-[#f94563e9] border  bg-[#f9c5c5e8]">
-            {error} {loginError}
-          </p>
-        )}
+
       </form>
+
     </div>
   );
 };
