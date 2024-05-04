@@ -12,7 +12,7 @@ const Navbar = () => {
   };
   
   return (
-    <nav className="w-screen bg-stone-100 shadow-md shadow-black/5 flex-no-wrap fixed top-0 flex z-20 justify-between items-center py-4 px-4 min-[360px]:px-10 min-[460px]:px-30 sm:px-30 min-[900px]:px-32 xl:px-48">
+    <nav className="h-[8vh] w-screen bg-stone-100 shadow-md shadow-black/5 flex-no-wrap fixed top-0 flex z-20 justify-between items-center py-4 px-4 min-[360px]:px-10 min-[460px]:px-30 sm:px-30 min-[900px]:px-24">
       <Link to={"/"}>
         <p className="block text-2xl sm:text-3xl text-indigo-600 font-logo font-extrabold hover:text-indigo-400">
           Shelfy
@@ -23,7 +23,7 @@ const Navbar = () => {
         <div className="flex justify-end items-center basis-2/6">
           <Link
             to="/profile"
-            className="inline-block flex items-center justify-center pr-2"
+            className="inline-block flex items-center justify-center pr-2 capitalize"
           >
             <PiUserCircleThin className="w-[25px] h-[25px]" />
             {user.userName}

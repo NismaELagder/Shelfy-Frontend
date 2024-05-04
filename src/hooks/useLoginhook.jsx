@@ -26,7 +26,7 @@ export default function useLogin() {
       })
       .catch((error) => {
         setLoading(false);
-        setError(error.response.data);
+        setError(error?.response?.data);
       });
   };
 

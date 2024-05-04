@@ -43,9 +43,9 @@ export const BookDetails = () => {
     <>
       {isLoading && <Spinner />}
       {!isLoading && (
-        <div className="bg-white w-screen mt-4 flex flex-col basis-11/12 px-4 min-[360px]:px-10 min-[460px]:px-30 sm:px-30 min-[900px]:px-32 xl:px-48">
+        <div className="h-[92vh] bg-white w-full flex flex-col px-4 min-[360px]:px-10 min-[460px]:px-30 sm:px-30 min-[900px]:px-24">
 
-          <div className="book flex my-8 h-[440px]  font-primary">
+          <div className="book flex my-8 h-[440px] font-primary">
 
             <section className="shadow-md shadow-stone-400 min-w-1/3 w-1/3 bg-gray-50">
               <img

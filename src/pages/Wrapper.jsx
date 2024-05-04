@@ -6,11 +6,11 @@ export const Wrapper = ({ children }) => {
   const { pathname } = useLocation();
 
   return (
-    <div className="h-screen w-screen bg-white flex flex-col">
+    <div className="h-[92vh] mt-[7vh] w-full bg-white">
       {(pathname != "/login" && pathname != "/signup") && <Navbar />}
-      <div className="mt-16">
-        {children}
-      </div>
+
+      {children}
+
     </div>
   );
 };
