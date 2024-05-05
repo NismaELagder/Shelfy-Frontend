@@ -161,7 +161,7 @@ export const BookForm = ({ edit }) => {
   };
 
   return (
-    <div className="h-[92vh] rounded-md bg-white w-full pt-4 flex basis-11/12 px-4 min-[360px]:px-10 min-[460px]:px-30 sm:px-30 min-[900px]:px-24">
+    <div className="h-[92vh] rounded-md bg-white w-full p-4 flex basis-11/12 min-[360px]:px-10 min-[460px]:px-30 sm:px-30 min-[900px]:px-24">
       <section className="w-full md:w-1/2 rounded-md p-8 pb-0">
         <div className="w-full mx-auto">
           <h1 className="font-semibold text-2xl mb-2">

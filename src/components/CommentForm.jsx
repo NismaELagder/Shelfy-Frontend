@@ -86,7 +86,7 @@ const CommentForm = ({ bookId, className }) => {
       </form>
 
       <div
-        className="w-full"
+        className="w-full pb-4"
       >
         <h2 className="font-semibold text-lg my-8">
           <FaComments className="inline" /> Comments
@@ -98,7 +98,7 @@ const CommentForm = ({ bookId, className }) => {
           </p>
         ) : (
           comments?.map((comment) => (
-            <div className="my-2 bg-gray-50 px-4 py-2 border-stone-300 border ">
+            <div className="my-2 bg-gray-50 p-4 border-stone-300 border ">
               <h3 className="p-2 me-4 square-full rounded-md underline">
                 <PiUserCircleThin className="inline w-[30px] h-[30px]" />
                 {comment?.user}

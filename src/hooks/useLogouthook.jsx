@@ -9,6 +9,7 @@ const useLogout = () => {
   const logout = () => {
     dispatch({ type: "LOGOUT" });
     localStorage.removeItem("user");
+    localStorage.removeItem("favBooks");
     Navigate("/login");
   };
 

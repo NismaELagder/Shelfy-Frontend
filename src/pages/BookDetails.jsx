@@ -10,7 +10,8 @@ import ReadBtn from "../components/ReadBtn";
 import DownloadBtn from "../components/DownloadBtn";
 import CommentForm from "../components/CommentForm";
 import { AuthContext } from "../store/AuthContextProvider";
-import toggleFavBook from "../composables/toggleFavBook";
+import { toggleFavBook, findIsFav } from "../composables/toggleFavBook";
+import Spinner from "../components/Spinner";
 
 export const BookDetails = () => {
   const { id } = useParams();
@@ -18,6 +19,8 @@ export const BookDetails = () => {
   const [isLoading, setIsLoading] = useState(false);
   const { user } = useContext(AuthContext);
   const Navigate = useNavigate();
+  const [isFavBook, setIsFavBook] = useState(false)
+
   useEffect(() => {
     if (localStorage.getItem("user")) {
       // fetch data from the api based on query params when component mount
@@ -33,6 +36,9 @@ export const BookDetails = () => {
         .then((response) => {
           setIsLoading(true);
           setBookDetails(response.data);
+
+          setIsFavBook(findIsFav(id))
+
           setIsLoading(false);
         });
     } else {
@@ -41,9 +47,11 @@ export const BookDetails = () => {
   }, [id, user]);
   return (
     <>
-      {isLoading && <Spinner />}
+      {isLoading &&
+        <div className="h-[92vh] bg-white w-full flex flex-col justify-center basis-11/12 p-4 min-[360px]:px-10 min-[460px]:px-30 sm:px-30 min-[900px]:px-24">
+          <Spinner /></div>}
       {!isLoading && (
-        <div className="h-[92vh] bg-white w-full flex flex-col px-4 min-[360px]:px-10 min-[460px]:px-30 sm:px-30 min-[900px]:px-24">
+        <div className="h-[92vh] bg-white w-full flex flex-col p-4 min-[360px]:px-10 min-[460px]:px-30 sm:px-30 min-[900px]:px-24">
 
           <div className="book flex my-8 h-[440px] font-primary">
 
@@ -61,10 +69,10 @@ export const BookDetails = () => {
                 <button
                   className=" py-[10px] px-[1rem] square-full rounded-md border text-dark text-sm hover:text-red-500"
                   onClick={() => {
-                    toggleFavBook(bookDetails, user);
+                    toggleFavBook(bookDetails, user).then(response => { setIsFavBook(findIsFav(bookDetails._id)) });
                   }}
                 >
-                  <FaHeart />
+                  <FaHeart className={isFavBook ? "text-red-500" : ""} />
                 </button>
               </h1>
               <div className="flex items-center">
@@ -110,7 +118,7 @@ export const BookDetails = () => {
 
           </div>
 
-          <CommentForm className="my-16" bookId={id} />
+          <CommentForm className="my-14" bookId={id} />
         </div>
       )}
     </>

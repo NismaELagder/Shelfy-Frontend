@@ -1,8 +1,8 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../store/AuthContextProvider";
 import { FaHeart } from "react-icons/fa";
-import toggleFavBook from "../composables/toggleFavBook";
+import { toggleFavBook, findIsFav } from "../composables/toggleFavBook";
 const COLORS = [
   "from-slate-500",
   // "from-gray-500",
@@ -34,12 +34,20 @@ function getRandomIntInclusive(min = 0, max = 19) {
   return Math.floor(Math.random() * (maxFloored - minCeiled + 1) + minCeiled); // The maximum is inclusive and the minimum is inclusive
 }
 
-const Book = ({ bookInfo }) => {
+const Book = ({ bookInfo, isFav = false }) => {
   const { user } = useContext(AuthContext);
+  const [isFavBook, setIsFavBook] = useState(isFav)
+
+  const togglefavBook = (bookInfo, user) => {
+    toggleFavBook(bookInfo, user).then((response) => {
+      setIsFavBook(findIsFav(bookInfo._id))
+    })
+
+  }
   return (
     <>
       {bookInfo && (
-        
+
         <div className={`flex flex-col bg-gradient-to-b ${COLORS[getRandomIntInclusive()]} to-35%
         min-[360px]:mr-1 min-[460px]:mr-1 sm:mr-4 min-[900px]:mr-4 xl:mr-4
         border-stone-300 border my-2 h-[328px] sm:h-[375px] w-[160px] sm:w-[190px]`}>
@@ -71,9 +79,9 @@ const Book = ({ bookInfo }) => {
 
               <button
                 className="basis-1/3 w-full h-full flex justify-center items-center hover:text-red-500"
-                onClick={() => toggleFavBook(bookInfo, user)}
+                onClick={() => togglefavBook(bookInfo, user)}
               >
-                <FaHeart />
+                <FaHeart className={isFavBook ? "text-red-500" : ""} />
               </button>
             </div>
           </section>

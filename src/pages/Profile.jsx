@@ -18,7 +18,7 @@ const Profile = () => {
     navigate(-1);
   };
   return (
-    <div className="h-[92vh] bg-white w-full pt-4 flex flex-col basis-11/12 px-4 min-[360px]:px-10 min-[460px]:px-30 sm:px-30 min-[900px]:px-24">
+    <div className="h-[92vh] bg-white w-full p-4 flex flex-col basis-11/12 min-[360px]:px-10 min-[460px]:px-30 sm:px-30 min-[900px]:px-24">
       <nav className="font-semibold underline w-full basis-1/12 flex justify-between items-center">
         <button
           onClick={backHandler}

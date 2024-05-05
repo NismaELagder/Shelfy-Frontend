@@ -23,8 +23,8 @@ const PDFViewer = () => {
   }, []);
 
   return (
-    <div className="h-[92vh] bg-white w-full pt-4 flex flex-col basis-11/12 px-4 min-[360px]:px-10 min-[460px]:px-30 sm:px-30 min-[900px]:px-24">
-      <div className="flex flex-col justify-start mt-4 mb-2 items-start">
+    <div className="h-[92vh] bg-white w-full p-4 flex flex-col basis-11/12 min-[360px]:px-10 min-[460px]:px-30 sm:px-30 min-[900px]:px-24">
+      <div className="flex flex-col justify-start mt-4 mb-1 items-start">
         <button
           onClick={backHandler}
           className="block rounded px-2 hover:text-indigo-500"
@@ -40,7 +40,7 @@ const PDFViewer = () => {
           -Alt key- while page loading).
         </p>
       </div>
-      <p className="text-center text-xl mt-2 mb-12 font-primary font-semibold capitalize">
+      <p className="text-center text-xl mt-2 mb-5 font-primary font-semibold capitalize">
         {to.substring(0, to.lastIndexOf(".pdf"))}
       </p>
       <object

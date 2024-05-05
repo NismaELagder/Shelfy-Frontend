@@ -19,10 +19,28 @@ export default function useLogin() {
       )
       .then((response) => {
         const user = response.data;
-        dispatch({ type: "SIGNUP", payload: user });
-        setLoading(false);
-        localStorage.setItem("user", JSON.stringify(user));
-        return user;
+
+        axios
+          .get(
+            `http://localhost:4000/books/fav`,
+            {
+              headers: {
+                authorization: `Bearer ${user?.token}`,
+              },
+            }
+          )
+          .then((response) => {
+            localStorage.setItem("favBooks", JSON.stringify(response.data.map(b => b._id)));
+          })
+          .catch((error) => {
+            localStorage.setItem("favBooks", JSON.stringify([]));
+          })
+          .finally(() => {
+            dispatch({ type: "SIGNUP", payload: user });
+            setLoading(false);
+            localStorage.setItem("user", JSON.stringify(user));
+            return user;
+          });
       })
       .catch((error) => {
         setLoading(false);
