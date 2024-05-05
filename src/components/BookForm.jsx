@@ -17,7 +17,7 @@ const ALERT_MESSAGES_BG_COLOR = [
     message: "Book Edited Successfully!", color: "bg-green-200"
   },
   {
-    message: "Book Added Successfully!", color: "bg-green-200"
+    message: "Book Added Successfully! Add more!", color: "bg-green-200"
   }
 ]
 
@@ -31,7 +31,7 @@ export const BookForm = ({ edit }) => {
     if (edit) {
       axios
         .get(
-          `https://book-store-backend-qtea.onrender.com/books/book/${id}`,
+          `http://localhost:4000/books/book/${id}`,
           {
             headers: {
               authorization: `Bearer ${user?.token}`,
@@ -75,7 +75,7 @@ export const BookForm = ({ edit }) => {
       });
       axios
         .post(
-          "https://book-store-backend-qtea.onrender.com/books/book",
+          "http://localhost:4000/books/book",
           formData,
           {
             headers: {
@@ -125,7 +125,7 @@ export const BookForm = ({ edit }) => {
 
       axios
         .put(
-          `https://book-store-backend-qtea.onrender.com/books/book/${id}`,
+          `http://localhost:4000/books/book/${id}`,
           formData,
           {
             headers: {
@@ -161,7 +161,7 @@ export const BookForm = ({ edit }) => {
   };
 
   return (
-    <div className="rounded-md bg-white w-screen mt-4 flex basis-11/12 px-4 min-[360px]:px-10 min-[460px]:px-30 sm:px-30 min-[900px]:px-32 xl:px-48">
+    <div className="h-[92vh] rounded-md bg-white w-full p-4 flex basis-11/12 min-[360px]:px-10 min-[460px]:px-30 sm:px-30 min-[900px]:px-24">
       <section className="w-full md:w-1/2 rounded-md p-8 pb-0">
         <div className="w-full mx-auto">
           <h1 className="font-semibold text-2xl mb-2">

@@ -18,19 +18,19 @@ const Profile = () => {
     navigate(-1);
   };
   return (
-    <div className="bg-white w-screen mt-4 flex flex-col basis-11/12 px-4 min-[360px]:px-10 min-[460px]:px-30 sm:px-30 min-[900px]:px-32 xl:px-48">
+    <div className="h-[92vh] bg-white w-full p-4 flex flex-col basis-11/12 min-[360px]:px-10 min-[460px]:px-30 sm:px-30 min-[900px]:px-24">
       <nav className="font-semibold underline w-full basis-1/12 flex justify-between items-center">
         <button
           onClick={backHandler}
           className="block rounded px-2 hover:text-indigo-500"
         >
-          <IoArrowBackOutline className="inline-block pr-1" />
+          <IoArrowBackOutline className="inline-block pr-1 text-l" />
           Back
         </button>
 
         <Link
           to="/books/createbook"
-          className="block rounded px-2 hover:text-indigo-500"
+          className="block rounded px-2 hover:text-indigo-500 text-xl"
         ><IoAddOutline className="inline-block pr-1" />
           Add Book
         </Link>

@@ -15,7 +15,7 @@ export default function useSignup() {
     setLoading(true);
     axios
       .post(
-        "https://book-store-backend-qtea.onrender.com/users/signup",
+        "http://localhost:4000/users/signup",
         {
           userName,
           email,

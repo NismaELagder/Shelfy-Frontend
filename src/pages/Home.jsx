@@ -16,7 +16,7 @@ export const Home = () => {
   }, [user]);
 
   return (
-    <div className="bg-white w-screen flex flex-col justify-center basis-11/12 px-4 min-[360px]:px-10 min-[460px]:px-30 sm:px-30 min-[900px]:px-32 xl:px-48">
+    <div className="h-[92vh] p-8 bg-white w-full flex flex-col justify-center basis-11/12 min-[360px]:px-10 min-[460px]:px-30 sm:px-30 min-[900px]:px-24">
       {!Object.keys(BooksCtx.books).length ? <Spinner /> : <Books />}
     </div>
   );

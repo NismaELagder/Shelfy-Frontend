@@ -6,7 +6,7 @@ const DownloadBtn = ({ className, pdf }) => {
     <Link
       className={className}
       download
-      to={`https://book-store-backend-qtea.onrender.com/pdfs/${pdf}`}
+      to={`http://localhost:4000/pdfs/${pdf}`}
       target="_blank"
     >
       Download

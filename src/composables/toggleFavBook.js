@@ -1,9 +1,9 @@
 import axios from "axios";
-const toggleFavBook = (bookdetails, user) => {
+export const toggleFavBook = (bookdetails, user) => {
   let results;
-  axios
+  return axios
     .put(
-      `https://book-store-backend-qtea.onrender.com/books/book/read/${bookdetails._id}`,
+      `http://localhost:4000/books/book/read/${bookdetails._id}`,
       null,
       {
         headers: {
@@ -13,9 +13,28 @@ const toggleFavBook = (bookdetails, user) => {
     )
     .then((response) => {
       results = response.data;
+      let savedFavBooks = JSON.parse(localStorage.getItem("favBooks")) || [];
+      if (results.length > 0) {
+        savedFavBooks.push(bookdetails._id)
+      } else {
+        const index = savedFavBooks.indexOf(bookdetails._id);
+        if (index > -1) {
+          savedFavBooks.splice(index, 1);
+        }
+      }
+      localStorage.setItem("favBooks", JSON.stringify(savedFavBooks));
+      return results
     });
 
   return results;
 };
 
-export default toggleFavBook;
+export const findIsFav = (bookId) => {
+  let savedFavBooks = JSON.parse(localStorage.getItem("favBooks")) || [];
+  if (savedFavBooks.includes(bookId)) {
+    return true;
+  }
+  return false;
+}
+
+export default { toggleFavBook, findIsFav };

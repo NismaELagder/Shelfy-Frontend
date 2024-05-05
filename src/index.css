@@ -9,9 +9,9 @@ input[type="file"] {
   font-size: 12px;
 }
 input[type="file"]::file-selector-button {
-  color: #ffffff;
-  background: rgb(73, 105, 137);
-  padding: 0.4rem;
+  /* color: #ffffff; */
+  /* background: rgb(73, 105, 137); */
+  padding: 0.49rem;
   height: 100%;
   border: none;
 }
