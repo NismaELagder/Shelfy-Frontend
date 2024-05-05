@@ -17,20 +17,34 @@ const UserBooks = () => {
   const [myBooks, setMyBooks] = useState([]);
   const deleteHandler = (id) => {
     axios.delete(
-      `https://book-store-backend-qtea.onrender.com/books/book/${id}`,
+      `http://localhost:4000/books/book/${id}`,
       {
         headers: {
           authorization: `Bearer ${user.token}`,
         },
       }
-    );
+    ).then((response) => {
+      axios
+        .get(
+          "http://localhost:4000/books/mybooks",
+          {
+            headers: {
+              authorization: `Bearer ${user.token}`,
+            },
+          }
+        )
+        .then((response) => {
+          setMyBooks((preBooks) => [...response.data]);
+        })
+        .catch((error) => console.log(error));
+    });
   };
 
   useEffect(() => {
     if (user) {
       axios
         .get(
-          "https://book-store-backend-qtea.onrender.com/books/mybooks",
+          "http://localhost:4000/books/mybooks",
           {
             headers: {
               authorization: `Bearer ${user.token}`,
@@ -60,7 +74,7 @@ const UserBooks = () => {
           </p>
         ) : (
           myBooks.map((book) => (
-            <div className="border border-stone-300 mb-2 flex flex-col sm:flex-row justify-between border-collapse">
+            <div key={book._id} className="border border-stone-300 mb-2 flex flex-col sm:flex-row justify-between border-collapse">
 
               <div className=" w-full flex p-2">
                 <img

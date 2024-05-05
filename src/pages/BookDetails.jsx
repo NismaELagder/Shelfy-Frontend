@@ -23,7 +23,7 @@ export const BookDetails = () => {
       // fetch data from the api based on query params when component mount
       axios
         .get(
-          `https://book-store-backend-qtea.onrender.com/books/book/${id}`,
+          `http://localhost:4000/books/book/${id}`,
           {
             headers: {
               authorization: `Bearer ${user?.token}`,

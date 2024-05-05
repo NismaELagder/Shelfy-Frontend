@@ -11,13 +11,15 @@ import { IoInformationCircleOutline } from "react-icons/io5";
 
 import { AuthContext } from "../store/AuthContextProvider";
 import toggleFavBook from "../composables/toggleFavBook";
+
 const FavBooks = () => {
   const { user } = useContext(AuthContext);
   const [favBooks, setFavBooks] = useState([]);
+
   useEffect(() => {
     axios
       .get(
-        `https://book-store-backend-qtea.onrender.com/books/fav`,
+        `http://localhost:4000/books/fav`,
         {
           headers: {
             authorization: `Bearer ${user?.token}`,
@@ -53,8 +55,7 @@ const FavBooks = () => {
 
             <div className="border border-stone-300 mb-2 flex flex-col grow
             sm:flex-row sm:mx-1 justify-between border-collapse
-            sm:h-[194px] sm:w-[388px]
-            ">
+            sm:h-[194px] sm:w-[388px]" key={book._id}>
               <div className="w-full flex p-2">
                 <img
                   src={book.imageURL}

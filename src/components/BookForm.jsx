@@ -17,7 +17,7 @@ const ALERT_MESSAGES_BG_COLOR = [
     message: "Book Edited Successfully!", color: "bg-green-200"
   },
   {
-    message: "Book Added Successfully!", color: "bg-green-200"
+    message: "Book Added Successfully! Add more!", color: "bg-green-200"
   }
 ]
 
@@ -31,7 +31,7 @@ export const BookForm = ({ edit }) => {
     if (edit) {
       axios
         .get(
-          `https://book-store-backend-qtea.onrender.com/books/book/${id}`,
+          `http://localhost:4000/books/book/${id}`,
           {
             headers: {
               authorization: `Bearer ${user?.token}`,
@@ -75,7 +75,7 @@ export const BookForm = ({ edit }) => {
       });
       axios
         .post(
-          "https://book-store-backend-qtea.onrender.com/books/book",
+          "http://localhost:4000/books/book",
           formData,
           {
             headers: {
@@ -125,7 +125,7 @@ export const BookForm = ({ edit }) => {
 
       axios
         .put(
-          `https://book-store-backend-qtea.onrender.com/books/book/${id}`,
+          `http://localhost:4000/books/book/${id}`,
           formData,
           {
             headers: {

@@ -24,13 +24,13 @@ const Profile = () => {
           onClick={backHandler}
           className="block rounded px-2 hover:text-indigo-500"
         >
-          <IoArrowBackOutline className="inline-block pr-1" />
+          <IoArrowBackOutline className="inline-block pr-1 text-l" />
           Back
         </button>
 
         <Link
           to="/books/createbook"
-          className="block rounded px-2 hover:text-indigo-500"
+          className="block rounded px-2 hover:text-indigo-500 text-xl"
         ><IoAddOutline className="inline-block pr-1" />
           Add Book
         </Link>

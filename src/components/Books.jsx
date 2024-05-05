@@ -7,6 +7,7 @@ import BOOKS_CAROUSEL_RESPONSIVE from '../utils/utils.jsx';
 
 const Books = () => {
   const { books } = useContext(BooksContext);
+
   return (
     <div className="h-[92vh] bg-white w-full flex flex-col pt-4">
       {
@@ -46,7 +47,7 @@ const Books = () => {
             >
               {
                 books[key].map(book => (
-                    <Book bookInfo={book} key={book._id} />
+                  <Book bookInfo={book} key={book._id} />
                 ))
               }</Carousel>
             {/* </div> */}

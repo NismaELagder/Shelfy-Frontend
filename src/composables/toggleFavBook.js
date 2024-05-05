@@ -3,7 +3,7 @@ const toggleFavBook = (bookdetails, user) => {
   let results;
   axios
     .put(
-      `https://book-store-backend-qtea.onrender.com/books/book/read/${bookdetails._id}`,
+      `http://localhost:4000/books/book/read/${bookdetails._id}`,
       null,
       {
         headers: {

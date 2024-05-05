@@ -44,7 +44,7 @@ const PDFViewer = () => {
         {to.substring(0, to.lastIndexOf(".pdf"))}
       </p>
       <object
-        data={`https://book-store-backend-qtea.onrender.com/pdfs/${to}#toolbar=0`}
+        data={`http://localhost:4000/pdfs/${to}#toolbar=0`}
         type="application/pdf"
         className="w-4/5 mx-auto h-[80vh]"
       />

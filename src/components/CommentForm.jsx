@@ -21,7 +21,7 @@ const CommentForm = ({ bookId, className }) => {
   useEffect(() => {
     axios
       .get(
-        `https://book-store-backend-qtea.onrender.com/books/book/${bookId}/comments`,
+        `http://localhost:4000/books/book/${bookId}/comments`,
         {
           headers: {
             authorization: `Bearer ${user?.token}`,
@@ -40,7 +40,7 @@ const CommentForm = ({ bookId, className }) => {
   const addComment = async () => {
     axios
       .put(
-        `https://book-store-backend-qtea.onrender.com/books/book/${bookId}/comments`,
+        `http://localhost:4000/books/book/${bookId}/comments`,
         comment,
         {
           headers: {
